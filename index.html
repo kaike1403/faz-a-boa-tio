@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pergunta Sim ou Não</title>
+    <style>
+        body {
+            background-image: url('https://s2-ug.ap4r.com/image-aigc-article/seoPic/origin/b4b5cb6cfd17e35ce29449e3481aa08ab1a36d19.png'); /* URL da imagem de fundo */
+            background-size: cover; /* Faz a imagem cobrir todo o fundo */
+            background-position: center; /* Centraliza a imagem de fundo */
+            background-repeat: no-repeat; /* Impede a repetição da imagem */
+            color: white; /* Texto branco para melhor contraste */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+            position: relative; /* Para posicionamento absoluto dos botões */
+        }
+        .button-sim {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-sim:hover {
+            background-color: darkgreen;
+        }
+        .button-nao {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            position: absolute; /* Para permitir a movimentação */
+            transition: transform 0.3s ease; /* Animação suave para o movimento */
+        }
+        .button-nao:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Paga o lanche hoje?</h1>
+        <button class="button-sim" onclick="location.href='obrigado.html'">Sim</button>
+        <button class="button-nao" id="button-nao" onmouseover="moveButton()">Não</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            const button = document.getElementById('button-nao');
+            const container = button.parentElement;
+            
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+</body>
+</html>
